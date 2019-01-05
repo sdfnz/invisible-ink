@@ -45,8 +45,8 @@ let draw = function() {
 }
 
 function resizeCanvas() {
-	canvas.width = window.innerWidth;
-	canvas.height = window.innerHeight;
+	canvas.width = window.innerWidth * .8;
+	canvas.height = window.innerHeight * .8;
 }
 
 resizeCanvas()

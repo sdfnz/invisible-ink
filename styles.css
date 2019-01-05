@@ -20,10 +20,16 @@ html, body {
 	right: 0px;
 	bottom: 0px;
 	margin: auto;
-	width: 80%;
 }
 
 #back {
 	display: none;
-	width: 80%;
+	background-color: #f9faed;
+	box-shadow: 5px 5px 8px;
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	margin: auto;
 }
