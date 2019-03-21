@@ -3,14 +3,13 @@ let context = canvas.getContext("2d");
 
 window.addEventListener('resize', resizeCanvas);
 
-
 let isDrawing = false;
 let pointsX = new Array();
 let pointsY = new Array();
 
 let draw = function() {
 	function startDraw(e) {
-		context.strokeStyle = "blue";
+		context.strokeStyle = "#348ad2";
 		context.lineJoin = "round";
 		context.lineCap = "round";
 		context.lineWidth = 15;
@@ -44,11 +43,19 @@ let draw = function() {
 	canvas.addEventListener("mouseout", stopDraw);
 }
 
+function fadeInk() {
+	context.fillStyle = "rgba(249,250,237,0.3)";
+	context.fillRect(0, 0, canvas.width, canvas.height);
+	setTimeout(fadeInk, 300);
+}
+
 function resizeCanvas() {
 	canvas.width = window.innerWidth * .8;
 	canvas.height = window.innerHeight * .8;
 }
 
+
 resizeCanvas()
 draw();
+fadeInk();
 
