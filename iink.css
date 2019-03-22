@@ -26,8 +26,8 @@ html, body {
 	position: absolute;
 	z-index: 5;
 	left: 45%;
-	bottom: 10%;
-	translate(-45%, -10%);
+	bottom: 2%;
+	translate(-45%, -2%);
 }
 
 button {
@@ -37,19 +37,24 @@ button {
 	border-radius: 5px;
 	border: none;
 	outline: none;
-	background-color: #d8d8d8;
-	margin: 15px auto;
+	margin-right: 20px;
 }
 
 .clear {
-	background: url('reload-4x.png'), #d8d8d8;
+	background: url('reload-4x.png'), #f9faed;
 	background-position: center;
 	background-repeat: no-repeat;
-	margin-right: 30px;
 }
 
 .reveal {
-	background: url('eye-4x.png'), #d8d8d8;
+	background: url('eye-4x.png'), #f9faed;
 	background-position: center;
 	background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 800px) {
+	.controls {
+		left: 35%;
+		translate(-35%, -2%);
+	}
 }
