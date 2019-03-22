@@ -22,6 +22,38 @@ html, body {
 	margin: auto;
 }
 
+.controls {
+	position: absolute;
+	z-index: 5;
+	left: 50%;
+	bottom: 10%;
+	translate(-50%, -10%);
+}
+
+button {
+	width: 50px;
+	height: 50px;
+	box-shadow: 1px 1px 3px;
+	margin: 10px auto;
+	border-radius: 5px;
+	border: none;
+	background-color: #d8d8d8;
+}
+
+.clear {
+	background: url('reload-4x.png'), #d8d8d8;
+	background-position: center;
+	background-repeat: no-repeat;
+	margin-right: 10px;
+}
+
+.reveal {
+	background: url('eye-4x.png'), #d8d8d8;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+/* Originally I planned to use a second canvas for revealing the ink
 #back {
 	display: none;
 	background-color: #f9faed;
@@ -33,3 +65,4 @@ html, body {
 	bottom: 0px;
 	margin: auto;
 }
+*/
