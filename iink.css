@@ -25,26 +25,27 @@ html, body {
 .controls {
 	position: absolute;
 	z-index: 5;
-	left: 50%;
+	left: 45%;
 	bottom: 10%;
-	translate(-50%, -10%);
+	translate(-45%, -10%);
 }
 
 button {
 	width: 50px;
 	height: 50px;
 	box-shadow: 1px 1px 3px;
-	margin: 10px auto;
 	border-radius: 5px;
 	border: none;
+	outline: none;
 	background-color: #d8d8d8;
+	margin: 15px auto;
 }
 
 .clear {
 	background: url('reload-4x.png'), #d8d8d8;
 	background-position: center;
 	background-repeat: no-repeat;
-	margin-right: 10px;
+	margin-right: 30px;
 }
 
 .reveal {
@@ -52,17 +53,3 @@ button {
 	background-position: center;
 	background-repeat: no-repeat;
 }
-
-/* Originally I planned to use a second canvas for revealing the ink
-#back {
-	display: none;
-	background-color: #f9faed;
-	box-shadow: 5px 5px 8px;
-	position: absolute;
-	top: 0px;
-	left: 0px;
-	right: 0px;
-	bottom: 0px;
-	margin: auto;
-}
-*/
