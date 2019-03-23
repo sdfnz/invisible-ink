@@ -11,14 +11,24 @@ let pointsY = new Array();
 
 let draw = function() {
 	function startDraw(e) {
+		let pX;
+		let pY;
+		if (e.targetTouches) {
+			e.preventDefault();
+			pX = e.targetTouches[0].pageX;
+			pY = e.targetTouches[0].pageY;
+		} else {
+			pX = e.pageX;
+			pY = e.pageY;
+		}
 		context.strokeStyle = "#348ad2";
 		context.lineJoin = "round";
 		context.lineCap = "round";
 		context.lineWidth = 15;
 		isDrawing = true;
 		context.beginPath();
-		let x = e.pageX - canvas.getBoundingClientRect().left;
-		let y = e.pageY - canvas.getBoundingClientRect().top;
+		let x = pX - canvas.getBoundingClientRect().left;
+		let y = pY - canvas.getBoundingClientRect().top;
 		pointsX.push(x);
 		pointsY.push(y);
 		context.moveTo(x, y);
@@ -26,8 +36,18 @@ let draw = function() {
 
 	function continueDraw(e) {
 		if (isDrawing) {
-			let x = e.pageX - canvas.getBoundingClientRect().left;
-			let y = e.pageY - canvas.getBoundingClientRect().top;
+			let pX;
+			let pY;
+			if (e.targetTouches) {
+				e.preventDefault();
+				pX = e.targetTouches[0].pageX;
+				pY = e.targetTouches[0].pageY;
+			} else {
+				pX = e.pageX;
+				pY = e.pageY;
+			}
+			let x = pX - canvas.getBoundingClientRect().left;
+			let y = pY - canvas.getBoundingClientRect().top;
 			pointsX.push(x);
 			pointsY.push(y);
 			context.lineTo(x, y);
@@ -42,8 +62,11 @@ let draw = function() {
 	}
 
 	canvas.addEventListener("mousedown", startDraw);
+	canvas.addEventListener("touchstart", startDraw);
 	canvas.addEventListener("mousemove", continueDraw);
+	canvas.addEventListener("touchmove", continueDraw);
 	canvas.addEventListener("mouseup", stopDraw);
+	canvas.addEventListener("touchend", stopDraw);
 	canvas.addEventListener("mouseout", stopDraw);
 }
 
@@ -110,4 +133,3 @@ revealBtn.addEventListener("click", revealInk);
 resizeCanvas()
 draw();
 fadeInk();
-
