@@ -8,8 +8,7 @@ let brushColor = colorPick.value;
 let isDrawing = false;
 let revealed = false;
 let timedFade;
-let pointsX = new Array();
-let pointsY = new Array();
+let coords = new Array();
 
 let draw = function() {
 	function startDraw(e) {
@@ -31,8 +30,7 @@ let draw = function() {
 		context.beginPath();
 		let x = pX - canvas.getBoundingClientRect().left;
 		let y = pY - canvas.getBoundingClientRect().top;
-		pointsX.push(x);
-		pointsY.push(y);
+		coords.push([x, y, brushColor]);
 		context.moveTo(x, y);
 	}
 
@@ -50,8 +48,7 @@ let draw = function() {
 			}
 			let x = pX - canvas.getBoundingClientRect().left;
 			let y = pY - canvas.getBoundingClientRect().top;
-			pointsX.push(x);
-			pointsY.push(y);
+			coords.push([x, y, brushColor]);
 			context.lineTo(x, y);
 			context.stroke();	
 		}
@@ -59,8 +56,7 @@ let draw = function() {
 
 	function stopDraw() {
 		isDrawing = false;
-		pointsX.push(-1);
-		pointsY.push(-1);
+		coords.push([-1, -1, -1]);
 	}
 
 	canvas.addEventListener("mousedown", startDraw);
@@ -82,13 +78,11 @@ function clearCanvas() {
 	if (revealed) {
 		context.fillStyle = "#454545";
 		context.fillRect(0, 0, canvas.width, canvas.height);
-		pointsX = [];
-		pointsY = [];
+		coords = [];
 	} else {
 		context.fillStyle = "#f9faed";
 		context.fillRect(0, 0, canvas.width, canvas.height);
-		pointsX = [];
-		pointsY = [];
+		coords = [];
 	}
 }
 
@@ -98,18 +92,21 @@ function revealInk() {
 		clearTimeout(timedFade);
 		context.fillStyle = "#454545";
 		context.fillRect(0, 0, canvas.width, canvas.height);
-		if (pointsX.length > 0) {
+		if (coords.length > 0) {
 			context.beginPath();
-			context.moveTo(pointsX[0], pointsY[0]);
-			for (let i = 0; i < pointsX.length; i++) {
-				if (pointsX[i] === -1) {
-					while (pointsX[i] === -1) {
+			context.moveTo(coords[0][0], coords[0][1]);
+			context.strokeStyle = coords[0][2];
+			for (let i = 0; i < coords.length; i++) {
+				if (coords[i][0] === -1) {
+					while (coords[i][0] === -1) {
 						i++;
 					}
 					context.beginPath();
-					context.moveTo(pointsX[i], pointsY[i]);
+					context.strokeStyle = coords[i][2];
+					context.moveTo(coords[i][0], coords[i][1]);
 				} else {
-					context.lineTo(pointsX[i], pointsY[i]);
+					context.strokeStyle = coords[i][2];
+					context.lineTo(coords[i][0], coords[i][1]);
 					context.stroke();	
 				}
 			}
