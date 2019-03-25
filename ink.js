@@ -1,8 +1,10 @@
-let canvas = document.getElementById("front");
-let context = canvas.getContext("2d");
+const canvas = document.getElementById("front");
+const context = canvas.getContext("2d");
+const clearBtn = document.querySelector(".clear");
+const revealBtn = document.querySelector(".reveal");
+const colorPick = document.querySelector(".picker"); 
 
-window.addEventListener('resize', resizeCanvas);
-
+let brushColor = colorPick.value;
 let isDrawing = false;
 let revealed = false;
 let timedFade;
@@ -21,7 +23,7 @@ let draw = function() {
 			pX = e.pageX;
 			pY = e.pageY;
 		}
-		context.strokeStyle = "#348ad2";
+		context.strokeStyle = brushColor;
 		context.lineJoin = "round";
 		context.lineCap = "round";
 		context.lineWidth = 15;
@@ -124,9 +126,17 @@ function resizeCanvas() {
 	canvas.height = window.innerHeight * .8;
 }
 
-const clearBtn = document.querySelector(".clear");
-const revealBtn = document.querySelector(".reveal");
+function changeColor() {
+	brushColor = colorPick.value;
+	context.strokeStyle = brushColor;
+}
+
+window.addEventListener("resize", resizeCanvas);
+
+colorPick.addEventListener("change", changeColor);
+
 clearBtn.addEventListener("click", clearCanvas);
+
 revealBtn.addEventListener("click", revealInk);
 
 

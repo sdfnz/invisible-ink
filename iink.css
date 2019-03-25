@@ -23,6 +23,7 @@ html, body {
 }
 
 .controls {
+	height: 55px;
 	position: absolute;
 	z-index: 5;
 	left: 45%;
@@ -44,12 +45,26 @@ button {
 	background: url('reload-4x.png'), #f9faed;
 	background-position: center;
 	background-repeat: no-repeat;
+	vertical-align: bottom;
 }
 
 .reveal {
 	background: url('eye-4x.png'), #f9faed;
 	background-position: center;
 	background-repeat: no-repeat;
+	vertical-align: bottom;
+}
+
+.picker {
+	background-color: #f9faed;
+	display: inline-block;
+	width: 50px;
+	height: 50px;
+	box-shadow: 1px 1px 3px;
+	border-radius: 5px;
+	border: none;
+	outline: none;
+	margin-right: 20px;
 }
 
 @media screen and (max-width: 800px) {
