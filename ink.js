@@ -8,6 +8,7 @@ let brushColor = colorPick.value;
 let isDrawing = false;
 let revealed = false;
 let timedFade;
+let fadeCount = 0;
 let coords = new Array();
 
 let draw = function() {
@@ -69,9 +70,22 @@ let draw = function() {
 }
 
 function fadeInk() {
-	context.fillStyle = "rgba(249,250,237,0.3)";
-	context.fillRect(0, 0, canvas.width, canvas.height);
-	timedFade = setTimeout(fadeInk, 300);
+	if (fadeCount === 20) {
+		context.fillStyle = "#f9faed";
+		context.fillRect(0, 0, canvas.width, canvas.height);
+		fadeCount = 0;
+		timedFade = setTimeout(fadeInk, 300);
+	} else if (!isDrawing) {
+		context.fillStyle = "rgba(249,250,237,0.3)";
+		context.fillRect(0, 0, canvas.width, canvas.height);
+		fadeCount++;
+		timedFade = setTimeout(fadeInk, 300);
+	} else {
+		fadeCount = 0;
+		context.fillStyle = "rgba(249,250,237,0.3)";
+		context.fillRect(0, 0, canvas.width, canvas.height);
+		timedFade = setTimeout(fadeInk, 300);
+	}
 }
 
 function clearCanvas() {
