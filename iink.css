@@ -41,6 +41,10 @@ button {
 	margin-right: 20px;
 }
 
+button:hover {
+	opacity: 0.9;
+}
+
 .clear {
 	background: url('reload-4x.png'), #f9faed;
 	background-position: center;
@@ -71,5 +75,41 @@ button {
 	.controls {
 		left: 35%;
 		translate(-35%, -2%);
+	}
+}
+
+@media screen and (max-width: 450px) {
+	.controls {
+		left: 20%;
+		bottom: 0%;
+		translate(-20%, -0%);
+	}
+}
+
+@media screen and (max-width: 300px) {
+	.controls {
+		left: 17%;
+		bottom: 0%;
+		translate(-17%, -0%);
+	}
+	button {
+		margin-right: 5px;
+	}
+	.picker {
+		margin-right: 0px;
+	}
+}
+
+@media screen and (max-width: 250px) {
+	.controls {
+		left: 10%;
+		bottom: 0%;
+		translate(-10%, -0%);
+	}
+	button {
+		margin-right: 5px;
+	}
+	.picker {
+		margin-right: 0px;
 	}
 }
